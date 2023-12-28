@@ -1,0 +1,84 @@
+# Docker Compose configuration for a simple web application with Celery worker and Redis as a message broker
+
+version: "3"
+
+services:
+
+  # Web service
+  web:
+    build:
+      context: ./app            # Build the web service using the Dockerfile in the "app" directory
+      dockerfile: Dockerfile
+    container_name: web         # Set the container name to "web"
+    ports:
+      - "1235:1235"             # Map port 1235 on the host to port 1235 in the container
+    depends_on:
+      - worker
+      - redis
+    volumes:
+      - "./app:/app"            # Mount the local "app" directory to /app in the container
+      - "files:/app/files"      # Mount the Docker volume "files" to /app/files in the container
+
+  # Celery worker service
+  worker:
+    build:
+      context: ./tasks          # Build the worker service using the Dockerfile in the "tasks" directory
+      dockerfile: Dockerfile
+    command: /venv/bin/supervisord -c supervisord.conf
+    container_name: worker      # Set the container name to "worker"
+    environment:
+      CELERY_BROKER_URL: redis://redis                # Set environment variables for Celery
+      CELERY_RESULT_BACKEND: redis://redis
+    healthcheck:
+      test: celery inspect ping      # Healthcheck command to check if Celery is responsive
+      interval: 30s                  # Interval between health checks
+      timeout: 10s                   # Timeout for each health check
+      retries: 3                     # Number of retries before considering the service unhealthy
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - "./tasks:/tasks"           # Mount the local "tasks" directory to /tasks in the container
+      - "files:/tasks/files"       # Mount the Docker volume "files" to /tasks/files in the container
+
+  # Redis service
+  redis:
+    image: redis:alpine            # Use the official Redis Alpine image
+    container_name: redis      # Set the container name to "redis"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]  # Healthcheck command to check if Redis is responsive
+      # start_period: 5s                    # Time to wait before starting healthchecks
+      interval: 1s                        # Interval between health checks
+      timeout: 3s                         # Timeout for each health check
+      retries: 30                         # Number of retries before considering the service unhealthy
+
+  nginx:
+    image: nginx:latest           # Use the latest Nginx image
+    container_name: nginx         # Set the container name to "nginx"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro  # Mount the local "nginx.conf" file to Nginx configuration
+    ports:
+      - "80:80"                   # Map port 80 on the host to port 80 in the container
+    depends_on:
+      - web                       # Wait for the "web" service to be running before starting
+
+  db:
+    image: postgres:latest
+    container_name: db      # Set the container name to "db"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - PGUSER=user
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass123
+      - POSTGRES_DB=cv_scan_db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      # start_period: 80s  
+
+volumes:
+  files:                         # Define a Docker volume named "files" for data persistence
+  postgres_data:

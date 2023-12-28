@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A.I. CV Scanner Pro</title>
+
+    <!-- Allow responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Link Roboto Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link Gothic A1 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.getotic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <!-- Link FlatIcon CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/2.0.0/uicons-solid-rounded/css/uicons-solid-rounded.css"
+    />
+
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.0.0/uicons-brands/css/uicons-brands.css">
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Load Font Awesome CSS -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    />
+
+    <!-- Link Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/landing/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="screen-loader-wrapper">
+      <span class="screen-loader"></span>
+    </div>
+    <!-- Banner Section -->
+    <section 
+      style="background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);">
+      <div class="container" style="height: 100vh;">
+        <div class="row d-flex justify-content-center" style="height: 100%;">
+          <div class="col">
+            <div
+              class="d-flex flex-column justify-content-center align-items-center px-2 px-4-xs"
+              style="
+                height: 100%;
+                transform: translate3d(0, 0, 1px);
+                backface-visibility: hidden;">
+              <h1
+                id="main-container-title"
+                class="text-center"
+                style="
+                  color: white;
+                  font-weight: bold;
+                  text-shadow: horizontal-shadow vertical-shadow blur color;
+                "
+              >
+                Revolutionize Hiring
+              </h1>
+              <p class="text-center" id="main-container-desc" style="color: white;">
+                Say goodbye to the tedious manual process and embrace the
+                efficiency and objectivity of artificial intelligence.
+              </p>
+              <div class="d-flex flex-row justify-content-center mt-2">
+                <a 
+                  href="#" 
+                  class="btn btn-success btn-sm mx-2"
+                  style="border: none;"
+                  >Learn More</a
+                >
+                <button
+                  id="scan-btn"
+                  class="btn btn-warning btn-sm mx-2"
+                  style="border: none;"
+                  >Scan Now</button
+                >
+              </div>
+              <div class="d-flex flex-row justify-content-center mt-4">
+                <a id="contacts_wechat_link" href="#" target="_blank" rel="noopener noreferrer" class="mx-2" style="text-decoration: none;">
+                  <i class="fab fa-weixin" style="color: white; font-size: 1.2rem;"></i>
+                </a>
+                <a id="contacts_phone_link" href="#" target="_blank" rel="noopener noreferrer" class="mx-2" style="text-decoration: none;">
+                  <i class="fi fi-sr-phone-flip" style="color: white; font-size: 1.2rem;"></i>
+                </a>
+                <a id="contacts_whatsapp_link" href="#" target="_blank" rel="noopener noreferrer" class="mx-2" style="text-decoration: none;">
+                  <i class="fi fi-brands-whatsapp" style="color: white; font-size: 1.2rem;"></i>
+                </a>
+                <a id="contacts_email_link" href="#" target="_blank" rel="noopener noreferrer" class="mx-2" style="text-decoration: none;">
+                  <i class="fi fi-sr-envelope" style="color: white; font-size: 1.2rem;"></i>
+                </a>
+                <a id="contacts_linkedin_link" href="#" target="_blank" rel="noopener noreferrer" class="mx-2" style="text-decoration: none;">
+                  <i class="fi fi-brands-linkedin" style="color: white; font-size: 1.2rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col d-none d-md-block">
+              <div class="d-flex justify-content-center align-items-center" style="height: 100%; padding-bottom: 20px;">
+                <img src="{{ url_for('static', filename='images/landing/banner-mockuper.png') }}" style="width: 100%; pointer-events: none;">
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script
+      type="module"
+      src="{{ url_for('static', filename='js/landing/events.js') }}"
+    ></script>
+  </body>
+</html>

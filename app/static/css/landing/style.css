@@ -1,0 +1,77 @@
+@import url("./screen-loader.css");
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  /* background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+}
+
+.banner-image {
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+}
+
+@media (max-width: 768) {
+  .banner-image {
+    min-height: 30vh;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  #main-container-header {
+    font-size: 1rem;
+  }
+  #main-container-title {
+    font-size: 2.4rem;
+  }
+  #main-container-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 576px) {
+  #main-container-header {
+    font-size: 1rem;
+  }
+  #main-container-title {
+    font-size: 2.5rem;
+  }
+  #main-container-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 1400px) and (min-width: 992px) {
+  #main-container-header {
+    font-size: 1.2rem;
+  }
+  #main-container-title {
+    font-size: 3.75rem;
+  }
+  #main-container-desc {
+    font-size: 1rem;
+  }
+}
+
+.glow-button {
+  position: relative;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(2px);
+  transition: 0.5s;
+}
+
+.glow-button:focus::before {
+  filter: blur(1px);
+}

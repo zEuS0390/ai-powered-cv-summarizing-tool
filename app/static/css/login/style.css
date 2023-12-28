@@ -1,0 +1,24 @@
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgb(43, 43, 43);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgb(146, 146, 146);
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    max-width: 100vw;
+  }  
+}
+
+@media only screen and (max-width: 1400px) and (min-width: 992px) {
+  .container {
+    max-width: 50vw;
+  }
+}

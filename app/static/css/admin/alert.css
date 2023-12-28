@@ -1,0 +1,12 @@
+/* 
+  Style for alert
+*/
+
+.alert-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  z-index: 9999;
+  border-radius: 0px;
+}

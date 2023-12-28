@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - A.I. CV Scanner Pro{% endblock %}
+
+{% block custom_style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login/style.css') }}">
+{% endblock %}
+
+{% block custom_script %}
+  <script type="module" src="{{ url_for('static', filename='js/login/events.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <section id="form-section">
+    <div class="container-fluid">
+      <div class="row d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div 
+          class="col d-none d-md-block rounded-start-lg" 
+          style="
+            max-width: 500px; 
+            height: 500px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;">
+          <div id="login-carousel" class="carousel slide d-flex align-items-center" data-bs-ride="carousel" style="height: 100%;">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#login-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#login-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#login-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active p-5" data-bs-interval="10000">
+                <div class="d-flex justify-content-center mb-5">
+                  <img src="{{ url_for('static', filename='images/login/ai.png') }}" width="128" height="128" alt="" style="pointer-events: none;"/>
+                </div>
+                <p style="text-align: center; font-weight: bold; font-size: 0.9rem;">
+                  The computer will generate questions tailored to summarize a candidate's background and suitability for the role.
+                </p>
+              </div>
+              <div class="carousel-item p-5" data-bs-interval="10000">
+                <div class="d-flex justify-content-center mb-5">
+                  <img src="{{ url_for('static', filename='images/login/search.png') }}" width="128" height="128" alt="" style="pointer-events: none;"/>
+                </div>
+                <p style="text-align: center; font-weight: bold; font-size: 0.9rem;">
+                  Once the recruiter uploads the CVs, the computer will scan and store them in its memory.
+                </p>
+              </div>
+              <div class="carousel-item p-5" data-bs-interval="10000">
+                <div class="d-flex justify-content-center mb-5">
+                  <img src="{{ url_for('static', filename='images/login/automation.png') }}" width="128" height="128" alt="" style="pointer-events: none;"/>
+                </div>
+                <p style="text-align: center; font-weight: bold; font-size: 0.9rem;">
+                  The computer will save the results, allowing the recruiters to easily compare candidates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col bg-light p-5 rounded-end-lg" style="max-width: 500px; height: 500px;">
+          <h2 class="mb-4" style="font-size: 1.6rem;">&#128075; Welcome!</h2>
+          <form id="login-form">
+            <div class="mb-3">
+              <label for="username" class="form-label" style="font-size: 0.9rem;">Username</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+                <input type="text" class="form-control" id="username" placeholder="Enter your username" style="font-size: 0.9rem;" required>
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="password" class="form-label" style="font-size: 0.9rem;">Password</label>
+              <div class="input-group">
+                <span class="input-group-text" id="basic-addon1"><i class="bi bi-lock-fill"></i></span>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password" style="font-size: 0.9rem;" required>
+              </div>
+            </div>
+            <div class="d-grid mb-3">
+              <input id="login-btn" class="btn btn-success btn-sm" style="font-size: 0.9rem;" type="submit" value="Log In">
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+              <a href="/forgotPassword"><p style="margin: 0px; font-size: 0.9rem;">Forgot password?</p></a>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-center">
+              <p style="margin: 0px; font-size: 0.9rem;">Don't have an account? <a href="/register">Create</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

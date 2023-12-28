@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin - A.I. CV Scanner Pro{% endblock %}
+
+{% block custom_style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/alert.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin/style.css') }}">
+{% endblock %}
+
+{% block custom_script %}
+  <script type="module" src="{{ url_for('static', filename='js/admin/events.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/admin/functions.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/admin/variables.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <!-- Alert overlay -->
+  <div  
+  class="alert-wrapper" 
+  style="
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: auto;
+    z-index: 9999;
+    border-radius: 0px;"></div>
+
+  <section>
+    <div class="container bg-light rounded p-4 d-flex flex-column" style="min-height: 80vh;">
+      <div class="row">
+        <div class="col d-flex justify-content-between align-items-center">
+          <button 
+            id="back-page-btn" 
+            class="btn btn-sm" 
+            style="background-color: purple; color: white; border: none;"
+            data-bs-toggle="tooltip" 
+            data-bs-placement="right" 
+            title="Log out">
+            <i class="fi fi-sr-arrow-left" style="font-size: 0.9rem;"></i> 
+          </button>
+          <div>
+            <!-- Administrator Title -->
+            <h4 id="administrator-title" style="font-size: 1.5rem;">Administrator</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 1.25rem;">
+
+        <div class="col" >
+          <div class="d-flex justify-content-between mb-2">
+            <!-- Page Heading and Buttons -->
+            <div>
+              <h4 style="font-weight: bold; font-size: 1.2rem;">&#128101; Users</h4>
+            </div>
+            <div>
+              <!-- Add User, GPT Configuration, and Email Configuration Buttons -->
+              <button 
+                id="add-user-button" 
+                class="btn btn-success btn-sm"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Add">
+                <i class="fi fi-sr-plus" style="font-size: 0.9rem;"></i>
+              </button>
+              <button 
+                id="gpt-configuration-button" 
+                class="btn btn-secondary btn-sm"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Settings">
+                <i class="fi fi-sr-settings" style="font-size: 0.9rem;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="table-content-wrapper" class="row flex-fill">
+        <!-- Table content here -->
+      </div>
+    </div>
+  </section>
+{% endblock %}

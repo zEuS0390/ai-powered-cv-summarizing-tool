@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Jobs - A.I. CV Scanner Pro{% endblock %}
+
+{% block custom_style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form/style.css') }}"/>
+{% endblock %}
+
+{% block custom_script %}
+  <!-- <script defer src="{{ url_for('static', filename='js/form/observer.js') }}"></script> -->
+  <script type="module" src="{{ url_for('static', filename='js/form/events.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/form/functions.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/form/variables.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <!-- Screen loader -->
+  <div class="screen-loader-wrapper">
+    <span class="screen-loader"></span>
+  </div>
+
+  <!-- Alert overlay -->
+  <div  
+    class="alert-wrapper" 
+    style="
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: auto;
+      z-index: 9999;
+      border-radius: 0px;"></div>
+
+  <!-- Form Section -->
+  <section id="form-section">
+    <div class="container bg-light rounded p-4 d-flex flex-column" style="min-height: 80vh;">
+      <div class="row">
+        <div class="col d-flex justify-content-between align-items-center">
+          <button 
+            id="back-page-btn" 
+            class="btn btn-sm" 
+            style="background-color: purple; color: white; border: none;"
+            data-bs-toggle="tooltip" 
+            data-bs-placement="right" 
+            data-bs-title="Log out">
+            <i class="fi fi-sr-arrow-left" style="font-size: 0.9rem;"></i> 
+          </button>
+          <div>
+            <!-- User Title -->
+            <h4 id="user-title" style="font-size: 1.5rem;">User</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 1.25rem;">
+        <div class="col" >
+          <div class="d-flex justify-content-between mb-2">
+            <h4 style="font-weight: bold; font-size: 1.2rem;">&#128214; Jobs</h4>
+            <div>
+              <button 
+                id="add-job-button" 
+                class="btn btn-success btn-sm"
+                style="font-size: 0.9rem;"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Add">
+                <i class="fi fi-sr-plus" style="font-size: 0.9rem;"></i>
+              </button>
+              <button 
+                id="settings-button" 
+                class="btn btn-secondary btn-sm"
+                style="font-size: 0.9rem;"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Settings">
+                <i class="fi fi-sr-settings" style="font-size: 0.9rem;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="table-content-wrapper" class="row flex-fill">
+        <!-- Table content here -->
+      </div>
+    </div>
+  </section>
+{% endblock %}

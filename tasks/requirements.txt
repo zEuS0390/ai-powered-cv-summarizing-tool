@@ -1,0 +1,11 @@
+celery
+openai
+PyPDF2
+docx2txt
+sqlalchemy
+redis
+pymysql
+cryptography
+bcrypt
+psycopg2
+supervisor

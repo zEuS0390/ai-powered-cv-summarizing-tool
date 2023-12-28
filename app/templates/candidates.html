@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Summaries - A.I. CV Scanner Pro{% endblock %}
+
+{% block custom_style %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/candidates/style.css') }}"/>
+{% endblock %}
+
+{% block custom_script %}
+  <script type="module" src="{{ url_for('static', filename='js/candidates/functions.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/candidates/events.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/candidates/variables.js') }}"></script>
+{% endblock %}
+  
+{% block content %}
+
+  <!-- Screen loader -->
+  <!-- Display loader while the content is being loaded -->
+  <div class="screen-loader-wrapper">
+    <span class="screen-loader"></span>
+  </div>
+
+  <!-- Candidates Section -->
+  <section id="candidates">
+    <div class="container bg-light rounded p-4 d-flex flex-column" style="height: 80vh;">
+      <div class="row">
+        <div class="my-2 d-flex justify-content-between align-items-center">
+          <button 
+            id="back-page-btn" 
+            class="btn btn-sm" 
+            style="background-color: purple; color: white; border: none; font-size: 0.9rem;"
+            data-bs-toggle="tooltip" 
+            data-bs-placement="right" 
+            data-bs-title="Jobs">
+            <i class="fi fi-sr-arrow-left" style="font-size: 0.9rem;"></i> 
+          </button>
+          <div>
+            <!-- User title -->
+            <h4 id="user-title" style="font-size: 1.5rem;">User</h4>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="padding-top: 1.25rem;">
+        <div class="col">
+          <!-- Page Heading and Action Buttons -->
+          <div class="d-flex justify-content-between mb-2">
+            <h4 style="font-weight: bold; font-size: 1.2rem;">&#128212; Summaries</h4>
+            <div>
+              <!-- Upload and Download Buttons -->
+              <button
+                id="upload-files-button"
+                class="btn btn-success btn-sm"
+                style="font-size: 0.9rem;"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Add">
+                <i class="fi fi-sr-plus" style="font-size: 0.9rem;"></i>
+              </button>
+              <button
+                id="download-summaries-button"
+                class="btn btn-warning btn-sm"
+                style="font-size: 0.9rem;"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="top" 
+                data-bs-title="Download">
+                <i class="fi fi-sr-download" style="font-size: 0.9rem;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="table-content-wrapper" class="row flex-fill">
+        
+      </div>
+    </div>
+  </section>
+{% endblock %}
